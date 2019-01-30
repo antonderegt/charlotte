@@ -6,6 +6,12 @@ import '../scoped_models/main.dart';
 
 import '../models/budget.dart';
 
+class AmountFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty || !RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value) ? 'Price is required and it should be a number' : null;
+  }
+}
+
 class TagEditPage extends StatefulWidget {
   final Budget budget;
 
@@ -41,12 +47,7 @@ class _TagEditPageState extends State<TagEditPage> {
       ),
       keyboardType: TextInputType.number,
       initialValue: budget == 'null' || budget == null ? '0' : budget,
-      validator: (String value) {
-        if (value.isEmpty ||
-            !RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
-          return 'Price is required and it should be a number';
-        }
-      },
+      validator: AmountFieldValidator.validate,
       onSaved: (String value) {
         _formData[month] = value;
       },
