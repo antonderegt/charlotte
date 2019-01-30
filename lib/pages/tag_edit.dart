@@ -40,7 +40,7 @@ class _TagEditPageState extends State<TagEditPage> {
         labelText: month,
       ),
       keyboardType: TextInputType.number,
-      initialValue: budget == null ? '' : budget,
+      initialValue: budget == 'null' || budget == null ? '0' : budget,
       validator: (String value) {
         if (value.isEmpty ||
             !RegExp(r'^(?:[1-9]\d*|0)?(?:\.\d+)?$').hasMatch(value)) {
@@ -53,13 +53,13 @@ class _TagEditPageState extends State<TagEditPage> {
     );
   }
 
-  void _submitForm(
-      Function updateBudget, String budgetId, String categorie, String tag) {
+  void _submitForm(Function setBudgetIndex, Function updateBudget,
+      String budgetId, String categorie, String tag) {
     if (!_formKey.currentState.validate()) {
       return;
     }
     _formKey.currentState.save();
-
+    setBudgetIndex(widget.budget);
     updateBudget(
       budgetId,
       categorie,
@@ -152,8 +152,8 @@ class _TagEditPageState extends State<TagEditPage> {
             child: Icon(Icons.save),
             tooltip: 'Save',
             onPressed: () {
-              _submitForm(model.updateBudget, widget.budget.id,
-                  widget.budget.categorie, widget.budget.tag);
+              _submitForm(model.setBudgetIndex, model.updateBudget,
+                  widget.budget.id, widget.budget.categorie, widget.budget.tag);
             },
           ),
         );

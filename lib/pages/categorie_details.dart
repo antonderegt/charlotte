@@ -120,11 +120,8 @@ class _CategorieDetailsPageState extends State<CategorieDetailsPage> {
                                     );
                                   });
                             } else {
-                              print('adding tag');
                               Navigator.of(context).pop();
-                              model
-                                  .addTag(widget.categorie, newTag.text)
-                                  .then((_) => model.fetchBudgets());
+                              model.addTag(widget.categorie, newTag.text);//.then((_) => model.fetchBudgets());
                             }
                           },
                         ),

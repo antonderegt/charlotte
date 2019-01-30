@@ -15,6 +15,7 @@ class BudgetPage extends StatefulWidget {
 
 class _BudgetPageState extends State<BudgetPage> {
   final newCategorie = TextEditingController();
+  final newTag = TextEditingController();
 
   Widget _buildCategorieList(List<String> categories, MainModel model) {
     Widget categorieCards;
@@ -56,17 +57,27 @@ class _BudgetPageState extends State<BudgetPage> {
                       body: Column(
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.all(30.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Text(
                               'Enter a new categorie name',
                             ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: TextField(controller: newCategorie),
                           ),
                           SizedBox(
                             height: 10.0,
                           ),
                           Container(
-                            padding: EdgeInsets.all(30.0),
-                            child: TextField(controller: newCategorie),
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              'Enter a new tag name',
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            child: TextField(controller: newTag),
                           ),
                         ],
                       ),
@@ -104,11 +115,10 @@ class _BudgetPageState extends State<BudgetPage> {
                                   );
                                 });
                           } else {
-                            print('adding cat');
                             Navigator.of(context).pop();
                             model
-                                .addCategorie(newCategorie.text)
-                                .then((_) => model.fetchCategories());
+                                .addTag(newCategorie.text, newTag.text)
+                                .then((_) => model.fetchBudgets());
                           }
                         },
                       ),

@@ -25,10 +25,8 @@ class SideDrawer extends StatelessWidget {
                       : TextStyle(color: Colors.black),
                 ),
                 onTap: () {
-                  model.fetchCategories();
-                  // .then((_) {
-                    Navigator.pushReplacementNamed(context, '/budget');
-                  // });
+                  model.fetchBudgets();
+                  Navigator.pushReplacementNamed(context, '/budget');
                 },
               ),
               ListTile(

@@ -34,6 +34,7 @@ class TagCard extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
+                    // model.fetchBudgets();
                     return TagEditPage(budget);
                   },
                 ),

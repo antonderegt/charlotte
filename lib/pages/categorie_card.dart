@@ -19,7 +19,7 @@ class CategorieCard extends StatelessWidget {
         onDismissed: (DismissDirection direction) {
             // if (direction == DismissDirection.endToStart) {
               model.deleteCategorie(categorie).then((_) {
-                model.fetchCategories();
+                model.fetchBudgets();
               });
             // }
           },
@@ -30,7 +30,7 @@ class CategorieCard extends StatelessWidget {
           leading: Icon(Icons.navigate_next),
           title: Text(categorie),
           onTap: () {
-            model.fetchBudgets();
+            // model.fetchBudgets();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (BuildContext context) {
