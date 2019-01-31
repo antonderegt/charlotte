@@ -45,6 +45,7 @@ class _BudgetPageState extends State<BudgetPage> {
         ),
         body: _buildCategorieList(model.categories, model),
         floatingActionButton: FloatingActionButton(
+          key: Key('addCategorie'),
           child: Icon(Icons.add),
           tooltip: 'New categorie',
           onPressed: () {
@@ -82,6 +83,7 @@ class _BudgetPageState extends State<BudgetPage> {
                         ],
                       ),
                       floatingActionButton: FloatingActionButton(
+                        key: Key('saveNewCategorie'),
                         child: Icon(Icons.save),
                         onPressed: () {
                           bool duplicate = false;
