@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+![Travis Build](https://img.shields.io/travis/antonderegt/charlotte.svg?style=flat) 
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
